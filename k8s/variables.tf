@@ -1,30 +1,13 @@
-variable "project_id" {
-  type = string
-}
-variable "region" {
-  type        = string
-  description = "project resion"
-}
-variable "vpc_name" {
+variable "cluster-net" {
   type = string
 }
 
-variable "playground-subnet" {
+variable "cluster-sub-network" {
   type = object({
-    region = string
-    cidr   = string
+    name = string
+    cidr = string
   })
 }
-
-#service account
-# variable "sa_id" {
-#   type = string
-# }
-# variable "sa_Dname" {
-#   type = string
-# }
-
-#cluster
 variable "cluster" {
   type = object({
     name              = string
@@ -36,11 +19,14 @@ variable "cluster" {
   })
 }
 
-#cluster node pool
 variable "node-pool" {
   type = object({
     name           = string
     machine-type   = string
     node-locations = list(string)
   })
+}
+
+variable "k8s-sa" {
+  type = string
 }
