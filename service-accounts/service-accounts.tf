@@ -17,7 +17,7 @@ resource "google_service_account" "kubernetes_service_account" {
 }
 
 resource "google_project_iam_binding" "gke_sa_binding" {
-  project = var.project_id
+  project = var.project-id
   role    = "roles/storage.admin" # access to storage admin
   members = [
     "serviceAccount:${google_service_account.kubernetes_service_account.email}"
