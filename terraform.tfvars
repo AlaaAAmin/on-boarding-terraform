@@ -34,3 +34,15 @@ buckets = [
   {
     name = "gs bucket 3"
 }]
+
+datasets = [
+  {
+    name = "BigQuery dataset 1"
+  },
+  {
+    name = "BigQuery dataset 2"
+  },
+  {
+    name = "BigQuery dataset 3"
+  }
+]

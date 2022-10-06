@@ -32,3 +32,10 @@ module "buckets" {
   buckets  = var.buckets
   location = module.network.playground-subnet.region
 }
+
+module "bigquery" {
+  source = "./bigquery"
+
+  datasets = var.datasets
+  location = module.network.playground-subnet.region
+}

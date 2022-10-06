@@ -50,3 +50,9 @@ variable "buckets" {
     name = string
   }))
 }
+
+variable "datasets" {
+  type = list(object({
+    name = string
+  }))
+}
