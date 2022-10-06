@@ -9,8 +9,7 @@ module "network" {
 }
 
 module "service-accounts" {
-  source = "./service-accounts"
-
+  source     = "./service-accounts"
   project-id = var.project_id
 }
 
@@ -25,4 +24,11 @@ module "k8s" {
   cluster   = var.cluster
   node-pool = var.node-pool
   k8s-sa    = module.service-accounts.kubernetes-sa.email
+}
+
+module "buckets" {
+  source = "./buckets"
+
+  buckets  = var.buckets
+  location = module.network.playground-subnet.region
 }

@@ -44,3 +44,9 @@ variable "node-pool" {
     node-locations = list(string)
   })
 }
+
+variable "buckets" {
+  type = list(object({
+    name = string
+  }))
+}

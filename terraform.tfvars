@@ -23,3 +23,14 @@ node-pool = {
   machine-type   = "e2-standard-2"
   node-locations = ["us-central1-c", "us-central1-f"]
 }
+
+buckets = [
+  {
+    name = "gs bucket 1"
+  },
+  {
+    name = "gs bucket 2"
+  },
+  {
+    name = "gs bucket 3"
+}]
