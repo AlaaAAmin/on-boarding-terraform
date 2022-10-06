@@ -56,3 +56,13 @@ variable "datasets" {
     name = string
   }))
 }
+
+variable "vm-instance" {
+  type = object({
+    name     = string
+    type     = string
+    os-image = string
+    zone     = string
+    net-tag  = string
+  })
+}

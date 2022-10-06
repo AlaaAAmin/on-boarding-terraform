@@ -39,3 +39,14 @@ module "bigquery" {
   datasets = var.datasets
   location = module.network.playground-subnet.region
 }
+
+module "compute-instance" {
+  source = "./compute-instance"
+
+  vm-instance = var.vm-instance
+  network = {
+    region = module.network.playground-subnet.region
+    subnet = module.network.playground-subnet.name
+    vpc    = module.network.vpc-name
+  }
+}

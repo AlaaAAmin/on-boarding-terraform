@@ -46,3 +46,11 @@ datasets = [
     name = "BigQuery dataset 3"
   }
 ]
+
+vm-instance = {
+  name     = "test-vm"
+  os-image = "ubuntu-os-cloud/ubuntu-2004-lts"
+  type     = "e2-micro"
+  zone     = "us-central1-c"
+  net-tag  = "test-vm"
+}
