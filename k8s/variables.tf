@@ -27,6 +27,6 @@ variable "node-pool" {
   })
 }
 
-variable "k8s-sa" {
+variable "gcr-read-sa-email" {
   type = string
 }

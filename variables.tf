@@ -24,6 +24,13 @@ variable "playground-subnet" {
 #   type = string
 # }
 
+variable "svc-accounts-names" {
+  type = list(object({
+    id   = string
+    name = string
+  }))
+}
+
 #cluster
 variable "cluster" {
   type = object({

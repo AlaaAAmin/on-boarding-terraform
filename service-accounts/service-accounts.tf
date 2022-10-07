@@ -1,25 +1,23 @@
-# resource "google_service_account" "bastion_service_account" {
-#   account_id   = var.sa_id
-#   display_name = var.sa_Dname
-# }
+#role    = "roles/container.admin" # admin access to kubernertes cluster
+#role    = "roles/storage.admin" # access to storage admin
 
-# resource "google_project_iam_binding" "sa_binding" {
-#   project = var.project_id
-#   role    = "roles/container.admin" # admin access to kubernertes cluster
-#   members = [
-#     "serviceAccount:${google_service_account.bastion_service_account.email}"
-#   ]
-# }
-
-resource "google_service_account" "kubernetes_service_account" {
-  account_id   = "kubernetes-sa"
-  display_name = "Kubernetes SA"
+resource "google_service_account" "svc-accounts" {
+  count        = length(var.svc-accounts-names)
+  account_id   = var.svc-accounts-names[count.index].id
+  display_name = var.svc-accounts-names[count.index].name
 }
-
-resource "google_project_iam_binding" "gke_sa_binding" {
+resource "google_project_iam_binding" "svc-account-binding" {
+  count   = length(var.svc-accounts-names)
   project = var.project-id
-  role    = "roles/storage.admin" # access to storage admin
+
+  role = (
+    google_service_account.svc-accounts[count.index].account_id == "gcr-sa" ? ("roles/storage.viewer")
+    :
+    (google_service_account.svc-accounts[count.index].account_id == "gs-buckets-sa" ? ("roles/storage.objectViewer")
+      :
+  ("roles/bigquery.dataEditor")))
+
   members = [
-    "serviceAccount:${google_service_account.kubernetes_service_account.email}"
+    "serviceAccount:${google_service_account.svc-accounts[count.index].email}"
   ]
 }

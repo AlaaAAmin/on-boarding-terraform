@@ -19,11 +19,12 @@ resource "google_compute_instance" "test-vm" {
     network    = var.network.vpc
     subnetwork = var.network.subnet
   }
+
   #   metadata_startup_script = file("startup_script.sh")
 
-  #   service_account {
-  #     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-  #     email  = google_service_account.bastion_service_account.email
-  #     scopes = ["cloud-platform"]
-  #   }
+  service_account {
+    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
+    email  = var.svc-accounts[0]
+    scopes = ["cloud-platform"]
+  }
 }

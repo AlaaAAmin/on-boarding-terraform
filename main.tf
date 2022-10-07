@@ -9,8 +9,9 @@ module "network" {
 }
 
 module "service-accounts" {
-  source     = "./service-accounts"
-  project-id = var.project_id
+  source             = "./service-accounts"
+  project-id         = var.project_id
+  svc-accounts-names = var.svc-accounts-names
 }
 
 module "k8s" {
@@ -21,9 +22,9 @@ module "k8s" {
     cidr = module.network.playground-subnet.ip_cidr_range
     name = module.network.playground-subnet.name
   }
-  cluster   = var.cluster
-  node-pool = var.node-pool
-  k8s-sa    = module.service-accounts.kubernetes-sa.email
+  cluster           = var.cluster
+  node-pool         = var.node-pool
+  gcr-read-sa-email = module.service-accounts.svc-accounts[0].email
 }
 
 module "buckets" {
@@ -49,4 +50,5 @@ module "compute-instance" {
     subnet = module.network.playground-subnet.name
     vpc    = module.network.vpc-name
   }
+  svc-accounts = [module.service-accounts.svc-accounts[1].email, module.service-accounts.svc-accounts[2].email]
 }

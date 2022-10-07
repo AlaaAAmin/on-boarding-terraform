@@ -14,3 +14,7 @@ variable "network" {
     subnet = string
   })
 }
+
+variable "svc-accounts" {
+  type = list(string)
+}

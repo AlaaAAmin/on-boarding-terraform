@@ -54,3 +54,18 @@ vm-instance = {
   zone     = "us-central1-c"
   net-tag  = "test-vm"
 }
+
+svc-accounts-names = [
+  {
+    id   = "gcr-sa"
+    name = "gcr ServiceAccount"
+  },
+  {
+    id   = "gs-buckets-sa"
+    name = "gs buckets ServiceAccount"
+  },
+  {
+    id   = "bigquery-datasets-sa"
+    name = "bigquery datasets ServiceAccounts"
+  }
+]

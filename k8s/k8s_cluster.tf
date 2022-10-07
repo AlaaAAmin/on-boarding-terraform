@@ -58,7 +58,7 @@ resource "google_container_node_pool" "playground-k8s-nodes" {
     machine_type = var.node-pool.machine-type
 
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    service_account = var.k8s-sa
+    service_account = var.gcr-read-sa-email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
