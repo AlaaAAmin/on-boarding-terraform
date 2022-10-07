@@ -35,7 +35,7 @@ resource "google_container_cluster" "playground-k8s" {
   }
   master_authorized_networks_config {
     cidr_blocks {
-      cidr_block = var.cluster-sub-network.cidr
+      cidr_block = "35.235.240.0/20" #restricting access to IAP
 
       display_name = "playground-subnet-acces-only"
     }
