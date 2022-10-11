@@ -1,0 +1,14 @@
+# exposing jenkins using a loadbalancer Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  namespace: shared-services
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30000
+  selector:
+    app: jenkins
