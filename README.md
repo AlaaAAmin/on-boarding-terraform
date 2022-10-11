@@ -12,7 +12,7 @@ This task is part of the On boarding process for a platform engineer using Terra
 
 ## Jenkins and the application
 
-- Docker image repository [Docker hub](https://hub.docker.com/r/alaaamin/reload-count-tornado-py-app)
+- The application is a simple python reload counter [repository](https://hub.docker.com/r/alaaamin/reload-count-tornado-py-app)
 - Testing the application deployment
 ![](./pics/app.png "application screenshot")
 - Testing the Jenkins deployment
